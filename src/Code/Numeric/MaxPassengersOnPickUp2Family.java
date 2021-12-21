@@ -6,21 +6,33 @@ public class MaxPassengersOnPickUp2Family {
 
 	public static void main(String[] args) {
 
-		Scanner input = new Scanner(System.in);
+		try {
+			Scanner input = new Scanner(System.in);
+			int maxPickup = 4;
 
-		int maxPickup = 4;
+			System.out.println("Input the number of families : ");
+			int nFamily = input.nextInt();
 
-		System.out.println("Input the number of families : ");
-		int nFamily = input.nextInt();
+			System.out.println("Input the number of members in the family : ");
+			int[] arrayMember = new int[nFamily];
 
-		System.out.println("Input the number of members in the family : ");
-		int[] arrayMember = new int[nFamily];
+			String line = input.next();
+			line = line.concat(input.nextLine());
+			String[] numberStr = line.split("\\s+");
 
-		for (int i = 0; i < nFamily; i++) {
-			int nMember = input.nextInt();
-			arrayMember[i] = nMember;
+			for (int i = 0; i < nFamily; i++) {
+				arrayMember[i] = Integer.parseInt(numberStr[i]);
+			}
+			input.close();
+
+			System.out.print("Minimun bus required is :" + Result(arrayMember, maxPickup));
+		} catch (Exception e) {
+			System.out.print("Input must be equal with count of family");
 		}
-		input.close();
+	}
+
+	public static String Result(int[] arrayMember, int maxPickup) {
+		String result = null;
 
 		for (int i = 0; i < arrayMember.length; i++) {
 			for (int j = i + 1; j < arrayMember.length; j++) {
@@ -43,8 +55,8 @@ public class MaxPassengersOnPickUp2Family {
 					arrayMember[j] = temp;
 				}
 			}
-//			System.out.print(arrayMember[i]+" ");
-		}		
+//			System.out.print(arrayMember[i] + " ");
+		}
 		System.out.println();
 
 		int count = 0;
@@ -73,6 +85,8 @@ public class MaxPassengersOnPickUp2Family {
 				count++;
 			}
 		}
-		System.out.print("Minimun bus required is : " + count);
+		result = " " + count;
+
+		return result;
 	}
 }
