@@ -31,17 +31,22 @@ public class SortCharacter {
 				}
 			}
 
-			char[] chVowles = vowels.toString().toCharArray();
+			char[] chVowels = vowels.toString().toCharArray();
 			char[] chConsonants = consonants.toString().toCharArray();
 
-			for (int i = 1; i < chVowles.length; i++) {
-				for (int j = i + 1; j < chVowles.length; j++) {
+			for (int i = 1; i < chVowels.length; i++) {
+				for (int j = i + 1; j < chVowels.length; j++) {
 					char temp = '\0';
-					if (chVowles[i] == chVowles[j] && chVowles[i] != ',' && chVowles[i] != ',' && chVowles[i] != ' '
-							&& chVowles[j] != ' ') {
-						temp = chVowles[i + 1];
-						chVowles[i + 1] = chVowles[j];
-						chVowles[j] = temp;
+					if (chVowels[i] == chVowels[j] && chVowels[i] != ',' && chVowels[i] != ',' && chVowels[j] != ' '
+							&& chVowels[j] != ' ') {
+						temp = chVowels[i + 1];
+						chVowels[i + 1] = chVowels[j];
+						chVowels[j] = temp;
+						if (temp >= 'a' && temp <= 'z') {
+							chVowels[i + 2] = temp;
+							chVowels[j] = ' ';
+							break;
+						}
 					}
 				}
 			}
@@ -49,15 +54,20 @@ public class SortCharacter {
 			for (int i = 1; i < chConsonants.length; i++) {
 				for (int j = i + 1; j < chConsonants.length; j++) {
 					char temp = '\0';
-					if (chConsonants[i] == chConsonants[j] && chConsonants[i] != ',' && chConsonants[i] != ','
+					if (chConsonants[i] == chConsonants[j] && chConsonants[i] != ',' && chConsonants[j] != ','
 							&& chConsonants[i] != ' ' && chConsonants[j] != ' ') {
 						temp = chConsonants[i + 1];
 						chConsonants[i + 1] = chConsonants[j];
 						chConsonants[j] = temp;
+						if (temp >= 'a' && temp <= 'z') {
+							chConsonants[i + 2] = temp;
+							chConsonants[j] = ' ';
+							break;
+						}
 					}
 				}
 			}
-			String strVowels = String.valueOf(chVowles);
+			String strVowels = String.valueOf(chVowels);
 			String strConsonants = String.valueOf(chConsonants);
 
 			System.out.print("Vowel Characters : ");
