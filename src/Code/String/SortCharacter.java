@@ -37,7 +37,7 @@ public class SortCharacter {
 			for (int i = 1; i < chVowels.length; i++) {
 				for (int j = i + 1; j < chVowels.length; j++) {
 					char temp = '\0';
-					if (chVowels[i] == chVowels[j] && chVowels[i] != ',' && chVowels[i] != ',' && chVowels[j] != ' '
+					if (chVowels[i] == chVowels[j] && chVowels[i] != ',' && chVowels[j] != ',' && chVowels[i] != ' '
 							&& chVowels[j] != ' ') {
 						temp = chVowels[i + 1];
 						chVowels[i + 1] = chVowels[j];
@@ -45,25 +45,26 @@ public class SortCharacter {
 						if (temp >= 'a' && temp <= 'z') {
 							chVowels[i + 2] = temp;
 							chVowels[j] = ' ';
-							break;
 						}
+						break;
 					}
 				}
 			}
 
 			for (int i = 1; i < chConsonants.length; i++) {
-				for (int j = i + 1; j < chConsonants.length; j++) {
+				for (int j = i + 1; j < chConsonants.length - 1; j++) {
 					char temp = '\0';
-					if (chConsonants[i] == chConsonants[j] && chConsonants[i] != ',' && chConsonants[j] != ','
-							&& chConsonants[i] != ' ' && chConsonants[j] != ' ') {
+					if (chConsonants[i] == chConsonants[j] && chConsonants[i] >= 'a' && chConsonants[i] <= 'z'
+							&& chConsonants[j] >= 'a' && chConsonants[j] <= 'z') {
+
 						temp = chConsonants[i + 1];
 						chConsonants[i + 1] = chConsonants[j];
 						chConsonants[j] = temp;
 						if (temp >= 'a' && temp <= 'z') {
 							chConsonants[i + 2] = temp;
 							chConsonants[j] = ' ';
-							break;
 						}
+						break;
 					}
 				}
 			}
